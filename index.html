@@ -1,0 +1,241 @@
+<html>
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8">
+    <title>Dee's Nuts - Premium Nuts & More!</title>
+    <link rel="icon" type="image/x-icon" href="/img/peanuts.svg">
+    <meta content="Dee's Nuts" property="og:title" />
+    <meta content="The Finest Nuts & Treats This Side of the Mississippi!" property="og:description" />
+    <meta content="https://f1dg3txd.github.io" property="og:url" />
+    <meta content="https://f1dg3txd.github.io/img/banner/icon.png" property="og:image" />
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1042">
+    <meta property="og:image:height" content="1042">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image:src" content="https://f1dg3txd.github.io/img/banner/icon.png">
+    <meta content="#DEB887" data-react-helmet="true" name="theme-color" />
+<style>
+:root {
+  --primary: #8B4513;
+  --accent: #DEB887;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #FDF5E6;
+  margin: 0;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  color: var(--primary);
+  padding: 20px;
+}
+
+.logo {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.nut-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.price {
+  color: #2E8B57;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.error-page {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #FDF5E6;
+  z-index: 1000;
+  padding: 20px;
+  text-align: center;
+}
+
+.error-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sad-nut {
+  animation: wobble 2s infinite;
+}
+
+@keyframes wobble {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.category-header {
+  grid-column: 1 / -1;
+  color: var(--primary);
+  margin-top: 20px;
+  padding: 10px;
+  border-bottom: 2px solid var(--accent);
+}
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">🥜 Dee's Nuts 🥜</div>
+    <p>The Finest Nuts & Treats This Side of the Mississippi!</p>
+  </div>
+
+  <div class="products">
+    <h2 class="category-header">Premium Nuts</h2>
+    
+    <div class="product-card" onclick="showError()">
+      <svg class="nut-icon" viewBox="0 0 100 100">
+        <path d="M50 20C30 20 15 35 15 50C15 75 35 85 50 85C65 85 85 75 85 50C85 35 70 20 50 20Z" fill="#8B4513"/>
+      </svg>
+      <h3>Premium Almonds</h3>
+      <p class="price">$12.99/lb</p>
+      <p>Hand-selected California almonds</p>
+    </div>
+
+    <div class="product-card" onclick="showError()">
+      <svg class="nut-icon" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="50" rx="35" ry="30" fill="#654321"/>
+      </svg>
+      <h3>Jumbo Cashews</h3>
+      <p class="price">$16.99/lb</p>
+      <p>Extra large, roasted to perfection</p>
+    </div>
+
+    <div class="product-card" onclick="showError()">
+      <svg class="nut-icon" viewBox="0 0 100 100">
+        <path d="M30 40C30 20 70 20 70 40C70 60 55 80 50 80C45 80 30 60 30 40Z" fill="#8B4513"/>
+      </svg>
+      <h3>Georgia Pecans</h3>
+      <p class="price">$14.99/lb</p>
+      <p>Fresh from the South!</p>
+    </div>
+
+    <div class="product-card" onclick="showError()">
+      <svg class="nut-icon" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="30" fill="#996633"/>
+      </svg>
+      <h3>Macadamia Nuts</h3>
+      <p class="price">$24.99/lb</p>
+      <p>Hawaiian paradise in every bite</p>
+    </div>
+
+    <div class="product-card" onclick="showError()">
+      <svg class="nut-icon" viewBox="0 0 100 100">
+        <path d="M25 50C25 30 75 30 75 50C75 70 60 85 50 85C40 85 25 70 25 50Z" fill="#8B4513"/>
+      </svg>
+      <h3>Brazilian Nuts</h3>
+      <p class="price">$18.99/lb</p>
+      <p>Amazonian superfood</p>
+    </div>
+
+    <div class="product-card" onclick="showError()">
+      <svg class="nut-icon" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="50" rx="25" ry="30" fill="#A0522D"/>
+      </svg>
+      <h3>Pine Nuts</h3>
+      <p class="price">$29.99/lb</p>
+      <p>Perfect for pesto!</p>
+    </div>
+
+    <div class="product-card" onclick="showError()">
+      <svg class="nut-icon" viewBox="0 0 100 100">
+        <path d="M35 30C35 20 65 20 65 30C65 50 55 70 50 70C45 70 35 50 35 30Z" fill="#8B4513"/>
+      </svg>
+      <h3>Pistachios</h3>
+      <p class="price">$19.99/lb</p>
+      <p>Premium California pistachios</p>
+    </div>
+
+    <div class="product-card" onclick="showError()">
+      <svg class="nut-icon" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="50" rx="30" ry="25" fill="#654321"/>
+      </svg>
+      <h3>Mixed Nuts Deluxe</h3>
+      <p class="price">$22.99/lb</p>
+      <p>Our premium blend of favorites</p>
+    </div>
+
+    <h2 class="category-header">Sweet Treats</h2>
+
+    <div class="product-card" onclick="showError()">
+      <svg class="nut-icon" viewBox="0 0 100 100">
+        <path d="M20 50C20 30 80 30 80 50S65 80 50 80 20 70 20 50" fill="#000000"/>
+        <path d="M30 45S50 55 70 45" stroke="#444" fill="none" stroke-width="3"/>
+      </svg>
+      <h3>Traditional Black Licorice</h3>
+      <p class="price">$8.99/lb</p>
+      <p>Classic twisted ropes</p>
+    </div>
+
+    <div class="product-card" onclick="showError()">
+      <svg class="nut-icon" viewBox="0 0 100 100">
+        <path d="M20 50C20 30 80 30 80 50S65 80 50 80 20 70 20 50" fill="#FF0000"/>
+        <path d="M30 45S50 55 70 45" stroke="#AA0000" fill="none" stroke-width="3"/>
+      </svg>
+      <h3>Red Licorice Twists</h3>
+      <p class="price">$7.99/lb</p>
+      <p>Sweet strawberry flavor</p>
+    </div>
+  </div>
+
+  <div class="error-page" id="errorPage">
+    <div class="error-content">
+      <svg class="sad-nut" width="200" height="200" viewBox="0 0 100 100">
+        <path d="M50 20C30 20 15 35 15 50C15 75 35 85 50 85C65 85 85 75 85 50C85 35 70 20 50 20Z" fill="#8B4513"/>
+        <circle cx="35" cy="45" r="5" fill="black"/>
+        <circle cx="65" cy="45" r="5" fill="black"/>
+        <path d="M35 65Q50 55 65 65" fill="none" stroke="black" stroke-width="3"/>
+      </svg>
+      <h1>406 - Not Acceptable</h1>
+      <h2>Sorry, we ate all our nuts! 🥜</h2>
+      <p>We couldn't help ourselves... they were just too delicious!</p>
+      <button onclick="hideError()" style="padding: 10px 20px; margin-top: 20px; background: var(--primary); color: white; border: none; border-radius: 5px; cursor: pointer;">Go Back</button>
+    </div>
+  </div>
+
+<script>
+function showError() {
+  document.getElementById('errorPage').style.display = 'block';
+}
+
+function hideError() {
+  document.getElementById('errorPage').style.display = 'none';
+}
+</script>
+</body></html>
