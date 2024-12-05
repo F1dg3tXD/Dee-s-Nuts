@@ -449,20 +449,72 @@
           document.getElementById('promoMessage').textContent = '10% discount applied!';
         }
         else if (code === 'purplesplite') {
-          // Turn all nut icons purple
           const nutIcons = document.querySelectorAll('.nut-icon path');
           nutIcons.forEach(path => {
-            if (path.getAttribute('fill') !== '#000000' && // Don't change black licorice
-              path.getAttribute('fill') !== '#FF0000') {  // Don't change red licorice
+            if (path.getAttribute('fill') !== '#000000' &&
+              path.getAttribute('fill') !== '#FF0000') {
               path.setAttribute('fill', '#800080');
             }
           });
-
-          // Show Splite's Pack
           document.getElementById('splitesPack').style.display = 'block';
-
           document.getElementById('promoMessage').style.display = 'block';
           document.getElementById('promoMessage').textContent = 'Purple mode activated! Secret item unlocked!';
+        }
+        else if (code === 'f1dg3t') {
+          const productCards = document.querySelectorAll('.product-card');
+          productCards.forEach(card => {
+            card.removeAttribute('onclick');
+
+            const productName = card.querySelector('h3').textContent;
+            let amazonLink = '';
+
+            switch (productName) {
+              case 'Premium Almonds':
+                amazonLink = 'https://www.amazon.com/s?k=almonds&i=amazonfresh';
+                break;
+              case 'Jumbo Cashews':
+                amazonLink = 'https://www.amazon.com/s?k=cashews&i=amazonfresh';
+                break;
+              case 'Georgia Pecans':
+                amazonLink = 'https://www.amazon.com/s?k=pecans&i=amazonfresh';
+                break;
+              case 'Macadamia Nuts':
+                amazonLink = 'https://www.amazon.com/s?k=macadamia+nuts&i=amazonfresh';
+                break;
+              case 'Brazilian Nuts':
+                amazonLink = 'https://www.amazon.com/s?k=brazil+nuts&i=amazonfresh';
+                break;
+              case 'Pine Nuts':
+                amazonLink = 'https://www.amazon.com/s?k=pine+nuts&i=amazonfresh';
+                break;
+              case 'Pistachios':
+                amazonLink = 'https://www.amazon.com/s?k=pistachios&i=amazonfresh';
+                break;
+              case 'Mixed Nuts Deluxe':
+                amazonLink = 'https://www.amazon.com/s?k=mixed+nuts&i=amazonfresh';
+                break;
+              case 'Traditional Black Licorice':
+                amazonLink = 'https://www.amazon.com/s?k=black+licorice&i=amazonfresh';
+                break;
+              case 'Red Licorice Twists':
+                amazonLink = 'https://www.amazon.com/s?k=red+licorice&i=amazonfresh';
+                break;
+            }
+
+            const wrapper = document.createElement('a');
+            wrapper.href = amazonLink;
+            wrapper.target = '_blank';
+            wrapper.rel = 'noopener noreferrer';
+            wrapper.style.textDecoration = 'none';
+            wrapper.style.color = 'inherit';
+
+            wrapper.innerHTML = card.innerHTML;
+            card.innerHTML = '';
+            card.appendChild(wrapper);
+          });
+
+          document.getElementById('promoMessage').style.display = 'block';
+          document.getElementById('promoMessage').textContent = 'Real shopping mode activated! Links now go to Amazon!';
         }
       }
     </script>
