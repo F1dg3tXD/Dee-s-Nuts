@@ -184,6 +184,32 @@
       padding: 10px;
       border-bottom: 2px solid var(--accent);
     }
+  
+    .speech-section {
+      background: white;
+      padding: 40px;
+      margin: 40px auto;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    .speech-section h2 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  
+    .speech-content {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #333;
+      text-align: justify;
+    }
+  
+    .speech-content p {
+      margin-bottom: 20px;
+    }
   </style>
   </head>
   
@@ -274,6 +300,20 @@
         <p>Our premium blend of favorites</p>
       </div>
   
+      <div class="product-card" onclick="showError()" style="display: none;" id="splitesPack">
+        <div style="display: flex; justify-content: center; gap: 10px;">
+          <svg class="nut-icon" style="width: 50px;" viewBox="0 0 100 100">
+            <path d="M50 20C30 20 15 35 15 50C15 75 35 85 50 85C65 85 85 75 85 50C85 35 70 20 50 20Z" fill="#4169E1" />
+          </svg>
+          <svg class="nut-icon" style="width: 50px;" viewBox="0 0 100 100">
+            <path d="M50 20C30 20 15 35 15 50C15 75 35 85 50 85C65 85 85 75 85 50C85 35 70 20 50 20Z" fill="#800080" />
+          </svg>
+        </div>
+        <h3>Splite's Nut Pack</h3>
+        <p class="price">$999.99/pack</p>
+        <p>The legendary blue & purple nuts</p>
+      </div>
+  
       <h2 class="category-header">Sweet Treats</h2>
   
       <div class="product-card" onclick="showError()">
@@ -323,6 +363,51 @@
       </div>
     </div>
   
+    <div class="speech-section">
+      <h2>The Dee's Nuts Speech</h2>
+      <div class="speech-content">
+        <p>Ladies and gentlemen, esteemed guests, and lovers of all things nutty,</p>
+  
+        <p>It is truly an honor to stand before you today to share a story of unparalleled quality, unwavering dedication,
+          and, most importantly, the exceptional greatness of Dee's Nuts. Now, I know what you're thinking—how can someone
+          possibly stand here and talk about nuts with such passion? But, my friends, when you have tasted Dee's Nuts, you
+          will understand that there is nothing more worthy of celebration.</p>
+  
+        <p>Dee's Nuts isn't just a name; it's a promise. A promise of quality, care, and craftsmanship that transforms
+          something as simple as a nut into an experience, a joy, a moment of delight. And let me tell you, Dee's Nuts are
+          not just any nuts—they are a testament to hard work, love, and a bit of magic that goes into every single batch.
+        </p>
+  
+        <p>It all began with Dee, of course—an individual whose love for nuts was matched only by her desire to share that
+          love with others. Dee didn't just want to sell nuts; she wanted to change the way people thought about them. She
+          wanted to take something you might casually snack on and elevate it to something you savor, something you crave,
+          something you can't wait to share with your friends and family. And that, my friends, is exactly what she did.
+        </p>
+  
+        <p>From the moment you open a bag of Dee's Nuts, you know you're in for something special. The aroma hits you
+          first—a perfect blend of roasted goodness that teases the senses and draws you in. You might think that nuts are
+          just nuts, but Dee's Nuts are in a league of their own. The balance of flavors, the perfect crunch, and the
+          richness of the experience make it clear: these are not your average nuts.</p>
+  
+        <p>What makes Dee's Nuts so remarkable is not just the taste, but the care and attention to detail that goes into
+          every step of the process. Dee, being the perfectionist that she is, didn't stop at simply finding the best
+          ingredients; she went above and beyond, experimenting, tweaking, and perfecting the flavors until she found the
+          perfect balance. It wasn't easy, but Dee never shied away from a challenge. Her nuts had to be just right, and
+          that meant hours in the kitchen, endless taste tests, and a relentless pursuit of excellence.</p>
+  
+        <p>But Dee's journey wasn't just about creating great nuts—it was about creating a community. Dee's Nuts brought
+          people together. It wasn't just about the product itself; it was about the joy it brought to those who tasted
+          it. And as more people discovered Dee's Nuts, the word began to spread. From friends sharing bags at parties to
+          families bonding over a bowl of Dee's Nuts, the magic was undeniable. Dee's Nuts became more than just a snack;
+          they became a symbol of connection, of warmth, and of the simple pleasures in life that we too often overlook.
+        </p>
+  
+        <p>So, let us raise our bags, our bowls, or even our hands, and give a heartfelt thank you to Dee for sharing her
+          nuts with the world. Here's to Dee's Nuts—may they continue to bring us joy, one delicious crunch at a time.
+          Thank you.</p>
+      </div>
+    </div>
+  
     <div class="error-page" id="errorPage">
       <div class="error-content">
         <svg class="sad-nut" width="200" height="200" viewBox="0 0 100 100">
@@ -350,8 +435,9 @@
       }
 
       function applyPromo() {
-        const code = document.getElementById('promoCode').value;
-        if (code.toLowerCase() === 'dinolovesnuts') {
+        const code = document.getElementById('promoCode').value.toLowerCase();
+
+        if (code === 'dinolovesnuts') {
           const prices = document.querySelectorAll('.price');
           prices.forEach(price => {
             const originalPrice = price.innerText;
@@ -360,6 +446,23 @@
             price.innerHTML = `<span class="original-price">${originalPrice}</span> $${discountedPrice}/lb`;
           });
           document.getElementById('promoMessage').style.display = 'block';
+          document.getElementById('promoMessage').textContent = '10% discount applied!';
+        }
+        else if (code === 'purplesplite') {
+          // Turn all nut icons purple
+          const nutIcons = document.querySelectorAll('.nut-icon path');
+          nutIcons.forEach(path => {
+            if (path.getAttribute('fill') !== '#000000' && // Don't change black licorice
+              path.getAttribute('fill') !== '#FF0000') {  // Don't change red licorice
+              path.setAttribute('fill', '#800080');
+            }
+          });
+
+          // Show Splite's Pack
+          document.getElementById('splitesPack').style.display = 'block';
+
+          document.getElementById('promoMessage').style.display = 'block';
+          document.getElementById('promoMessage').textContent = 'Purple mode activated! Secret item unlocked!';
         }
       }
     </script>
